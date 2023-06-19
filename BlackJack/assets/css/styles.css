@@ -1,0 +1,24 @@
+html,
+body {
+  margin: 0;
+  background-color: #eedcf5;
+}
+main {
+  background-color: rgba(81, 128, 0, 0.676);
+  margin-top: 2rem;
+}
+
+.titulo {
+  padding: 2rem;
+  text-align: center;
+}
+.carta {
+  position: relative;
+  left: 10rem;
+  width: 10rem;
+  margin-left: -7rem;
+}
+
+.cpu {
+  margin: 5rem 0rem 5rem 0rem;
+}

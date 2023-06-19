@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackJack</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <!-- //si queremos manipular el DOM guardamos lel query en un const -->
+        <h1 class="titulo"> BlackJack</h1>
+
+        <div class="row mt-2 pt-2">
+            <div class="col text-center" id="botones">
+                <button id="btn-ng" class="btn btn-primary">Nuevo Juego</button>
+                <button id="btn-pedir" class="btn btn-primary">Pedir Carta</button>
+                <button id="btn-stop" class="btn btn-danger">Detener</button>
+            </div>
+        </div>
+
+
+    </header>
+    <main>
+
+        <div class="row container">
+            <div class="col">
+                <h2 class="">Jugador1 - <small>0</small> </h2>
+
+                <div id="jugador-cartas">
+                    <!-- <img class="carta" src="../assets/cartas/10C.png" alt="">
+                    <img class="carta" src="../assets/cartas/10C.png" alt=""> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row container">
+            <div class="col cpu ">
+                <h2 class="mt-2">CPU - <small>0</small> </h2>
+
+                <div id="pc-cartas">
+                    <!-- <img class="carta" src="../assets/cartas/10S.png" alt="">
+                    <img class="carta" src="../assets/cartas/KH.png" alt=""> -->
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    <script src="../assets/js/undescore.js"></script>
+    <script src="../assets/js/juego.js"></script>
+</body>
+</html>
