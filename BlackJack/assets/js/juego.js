@@ -95,7 +95,7 @@
 
   //Acumular puntos
 
-  const acumularPuntoas = () => {};
+  const acumularPuntos = () => {};
 
   //TUrno CPU
 
