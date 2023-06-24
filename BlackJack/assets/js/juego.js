@@ -19,19 +19,22 @@
   const btnPedir = document.querySelector("#btn-pedir"),
     btnStop = document.querySelector("#btn-stop"),
     btnNewgame = document.querySelector("#btn-ng");
-  const divCartasP1 = document.querySelector("#jugador-cartas"),
-    divCartasCpu = document.querySelector("#pc-cartas"),
+  const divCartasJugadores = document.querySelectorAll(".divCartas"),
     puntos = document.querySelectorAll("small");
 
   //iniciaamos el juego
   const iniciarJuego = (numJugadores = 2) => {
     deck = crearDeck();
-
+    puntosJugadores = [];
     for (let i = 0; i < numJugadores; i++) {
       puntosJugadores.push(0);
     }
 
-    console.log({ puntosJugadores });
+    puntos.forEach((elemento) => (elemento.innerText = 0));
+    divCartasJugadores.forEach((elemento) => (elemento.innerHTML = ""));
+
+    btnPedir.disabled = false;
+    btnStop.disabled = false;
   };
 
   //funcion que crea una nueva barajja
@@ -56,8 +59,6 @@
     return _.shuffle(deck);
   };
 
-  crearDeck();
-
   //Funcion que me permite tomar una carta
 
   const pedirCarta = () => {
@@ -70,8 +71,6 @@
   };
 
   //´prueba de cartas
-
-  pedirCarta();
 
   const valorCarta = (carta) => {
     //extraer primera letra
@@ -94,28 +93,24 @@
   valorCarta(pedirCarta());
 
   //Acumular puntos
+  //turno 0, es le primer jugador y -1 es el turno de Cpu
 
-  const acumularPuntos = () => {};
+  const acumularPuntos = (carta, turno) => {
+    puntosJugadores[turno] = puntosJugadores[turno] + valorCarta(carta);
+    puntos[turno].innerText = puntosJugadores[turno];
+    return puntosJugadores[turno];
+  };
 
   //TUrno CPU
 
-  const turnoCpu = (ptsMinimos) => {
-    do {
-      const carta = pedirCarta();
-
-      puntosCpu = puntosCpu + valorCarta(carta);
-      puntos[1].innerText = puntosCpu;
-
-      const imgCarta = document.createElement("img");
-      imgCarta.src = `../assets/cartas/${carta}.png`;
-      imgCarta.classList.add("carta");
-      divCartasCpu.append(imgCarta);
-      //Si los puntos superan 21 se acaba el juego
-      if (ptsMinimos > 21) {
-        break;
-      }
-    } while (puntosCpu < ptsMinimos && ptsMinimos <= 21);
-
+  const crearCarta = (carta, turno) => {
+    const imgCarta = document.createElement("img");
+    imgCarta.src = `../assets/cartas/${carta}.png`;
+    imgCarta.classList.add("carta");
+    divCartasJugadores[turno].append[imgCarta];
+  };
+  const determinarWinner = () => {
+    const [ptsMinimos, puntosCpu] = puntosJugadores;
     setTimeout(() => {
       if (puntosCpu === ptsMinimos) {
         alert("NADIE GANA");
@@ -129,19 +124,33 @@
     }, 1000);
   };
 
+  const turnoCpu = (ptsMinimos) => {
+    let puntosCpu = 0;
+    do {
+      const carta = pedirCarta();
+      puntosCpu = acumularPuntos(carta, puntosJugadores.length - 1);
+      crearCarta(carta, puntosJugadores.length - 1);
+
+      // const imgCarta = document.createElement("img");
+      // imgCarta.src = `../assets/cartas/${carta}.png`;
+      // imgCarta.classList.add("carta");
+      // divCartasCpu.append(imgCarta);
+      //Si los puntos superan 21 se acaba el juego
+      if (ptsMinimos > 21) {
+        break;
+      }
+    } while (puntosCpu < ptsMinimos && ptsMinimos <= 21);
+    determinarWinner();
+  };
+
   //Eventos
 
   btnPedir.addEventListener("click", () => {
     //creamos una variable y le asignamos la funcion pedircarta
     const carta = pedirCarta();
 
-    puntosJugador = puntosJugador + valorCarta(carta);
-    puntos[0].innerText = puntosJugador;
-
-    const imgCarta = document.createElement("img");
-    imgCarta.src = `../assets/cartas/${carta}.png`;
-    imgCarta.classList.add("carta");
-    divCartasP1.append(imgCarta);
+    const puntosJugador = acumularPuntos(carta, 0);
+    crearCarta(carta, 0);
 
     if (puntosJugador > 21) {
       // alert("Perdiste");
@@ -150,28 +159,17 @@
     } else if (puntosJugador === 21) {
       // alert("21 ..GANASTE");
       disableBtn();
-      turnoCpu(puntosJugador);
+      turnoCpu(puntosJugadores);
     }
   });
 
   btnStop.addEventListener("click", () => {
     disableBtn();
-    turnoCpu(puntosJugador);
+    turnoCpu(puntosJugadores[0]);
   });
 
   btnNewgame.addEventListener("click", () => {
-    console.clear();
     iniciarJuego();
-
-    puntos[0].innerText = 0;
-    puntos[1].innerText = 0;
-    puntosCpu = 0;
-    puntosJugador = 0;
-
-    divCartasCpu.innerHTML = "";
-    divCartasP1.innerHTML = "";
-    btnPedir.disabled = false;
-    btnStop.disabled = false;
   });
 
   //Funcion disablebtn
