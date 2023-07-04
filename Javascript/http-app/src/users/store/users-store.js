@@ -1,3 +1,5 @@
+import { loadUsersByPage } from "../use-casses/load-users-ByPage";
+
 //no queremos export el state para que nadie lo manipule
 const state = {
   currentPages: 0,
@@ -7,12 +9,24 @@ const state = {
 //metodo que carga la siguiente pagina
 //solicita a un caso de uso donde carga a los usuarios dela pagina solicitada
 const loadNextPage = async () => {
-  throw new Error("Falta implementar");
+  //llamamos nuestro load userBypages seleccionamos el objeto con el current page con la primera pagina
+  const user = await loadUsersByPage(state.currentPages + 1);
+  //si nuestra pagina de usuarios esta vacia entonces se sume el currentPage +1
+  //en este case el state.users sera igual al user que declaramos arriba
+  if (user.length === 0) return;
+  state.currentPages += 1;
+  state.users = user;
 };
 
 //carga pagina anterior
 const loadPreviousPage = async () => {
-  throw new Error("Falta implementar");
+  //primero verificamos que no estemos en una pagina que no sea la 1
+  if (state.currentPages === 1) return;
+  //cargamos la pagina
+
+  const users = await loadUsersByPage(state.currentPages - 1);
+  state.users = users;
+  state.currentPages -= 1;
 };
 
 //

@@ -1,8 +1,8 @@
 import "./style.css";
 import javascriptLogo from "./javascript.svg";
 import viteLogo from "/vite.svg";
-// import { BreakingBAd } from "./src/breakingBad/breakingbad-app";
-import { UserApp } from "./src/users/users-app";
+// import { holaMhndo } from "./arrays/array-structuredclone";
+import "./arrays/array-to";
 
 document.querySelector("#app").innerHTML = `
   <div>
@@ -12,15 +12,19 @@ document.querySelector("#app").innerHTML = `
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <h1 id="app-title">Hello Vite!</h1>
+    <h1>Hello Vite!</h1>
     <div class="card">
-      
+      <button id="counter" type="button"></button>
     </div>
- 
+    <p class="read-the-docs">
+      Click on the Vite logo to learn more
+    </p>
   </div>
 `;
 
-const element = document.querySelector(".card");
-// BreakingBAd(element);
+// hola();
 
-UserApp(element);
+// holaMhndo();
+
+// holaMundo();
+// setupCounter(document.querySelector('#counter'))
