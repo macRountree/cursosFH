@@ -1,6 +1,5 @@
 "use strict";
 (() => {
-    //establecemos el tipo en este objeto en este caso es hero
     let flash = {
         name: "Barry Allen",
         edad: 24,
@@ -15,3 +14,4 @@
         },
     };
 })();
+//# sourceMappingURL=type.js.map
