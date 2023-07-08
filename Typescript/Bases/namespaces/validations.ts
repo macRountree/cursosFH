@@ -1,3 +1,7 @@
+//se usan cuando se realizan librerias oframeworks
+//es un agrupador global de una categoria
+//casi no se usa
+
 namespace Validations {
   export const validateText = (text: string): boolean => {
     return text.length > 3 ? true : false;

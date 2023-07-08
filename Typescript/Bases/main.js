@@ -9,4 +9,5 @@ var Validations;
     };
 })(Validations || (Validations = {}));
 console.log(Validations.validateText("Maxi"));
+console.log('Hola Mundo!');
 //# sourceMappingURL=main.js.map
