@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intro VUE</title>
+</head>
+<body>
+    <div id="myApp">
+        <h1>Batman's Quotes <small>{{newQuote}}</small></h1>
+        <!--  -->
+        <input type="text" v-model="newQuote" v-on:keypress.enter="addQuote">
+        <hr>
+        <ul>
+            <!-- Para barrer cada quote en un li asignamos la directiva v-for que es un for de Vue -->
+            <li v-for="{quote,author}, index in quotes">
+                <!-- el primer quote es la iteracion de un elemento el quote en si
+                    el .quote es la propiedad
+                -->
+                <span>{{index +1}}-{{quote}}</span>
+                <!-- podemos meter condicionales con v-if
+                si es false.. vue borra la etiqueta blockquote -->
+                <!-- <blockquote v-if="author ">- {{author}}</blockquote> -->
+
+                <!-- v-show aplica un display:none al blockquote -->
+                <blockquote v-show="author ">- {{author}}</blockquote>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
