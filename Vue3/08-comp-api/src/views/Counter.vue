@@ -1,23 +1,26 @@
 <template>
-  <h1>CounterView</h1>
-
+  <h1>Counter View</h1>
   <h3>{{ counter }}</h3>
-  <button>+1</button>
-  <button>-1</button>
+  <button @click="decrease">-1</button> -
+  <button @click="increase">+1</button>
 </template>
 
 <script>
-import { ref } from "vue";
+import useCounter from "@/composables/useCounter";
 export default {
   name: "Counter",
   props: {},
   emits: [],
-  //Lo demas se quedara dentro del setup
   setup() {
-    const counter = ref(5);
+    //el useCounter se puede desestructurar porque el return es un objet
+    const { counter, increase, decrease } = useCounter(25);
+
+    //para tener acceso al decrease e increase y usarlos en el template.. retornamos
 
     return {
       counter,
+      increase,
+      decrease,
     };
   },
 };

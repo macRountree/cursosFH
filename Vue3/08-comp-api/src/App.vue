@@ -2,8 +2,19 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link :to="{ name: 'counter' }">Counter</router-link>
+    <router-link :to="{ name: 'counter' }">Counter</router-link> |
+    <router-link :to="{ name: 'users' }">Usuarios</router-link>|
+    <router-link :to="{ name: 'pokemon-search' }">Buscar Pokemon</router-link>|
+    <router-link :to="{ name: 'todo' }">ToDo's</router-link>|
+    <router-link :to="{ name: 'slots' }">Slots</router-link>|
   </nav>
+
+  <router-view v-slot="{ Component }">
+    <!-- Keep ALive mantiene activado los cambios en nuestro template -->
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
 <style>
