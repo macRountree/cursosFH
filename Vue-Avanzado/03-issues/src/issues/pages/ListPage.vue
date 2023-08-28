@@ -8,7 +8,7 @@ import FilterSelector from 'src/issues/components/filter-selector/FilterSelector
 
 <template>
   <div class="row q-mb-md">
-    <div class="col-12"><span class="text-h4">GIthub issue</span></div>
+    <div class="col-12"><span class="text-h4">GIthub</span></div>
   </div>
 
   <div class="row">
