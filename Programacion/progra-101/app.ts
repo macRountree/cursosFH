@@ -7,12 +7,12 @@ class Car {
     isRunning: boolean;
     type: string;
     createdAt: number;
-    constructor(){
-        this.brand= 'No Brand';
+    constructor(brand: string, type: string){
+        this.brand= brand;
         this.doors = 0;
         this.fuelTank= 0;
         this.isRunning= false;
-        this.type = 'No Type';
+        this.type = type ;
         this.createdAt= 546456;
     }
     //METODOS
@@ -50,8 +50,10 @@ class Car {
   }
   }
 
-let myMazda = new Car();
+let myMazda = new Car('Mazda', 'Sedan');
 
+myMazda.brand = 'Mazda';
+myMazda.type = 'Sedan'
 
 // console.log(myMazda);
 
