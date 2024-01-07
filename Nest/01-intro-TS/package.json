@@ -1,5 +1,5 @@
 {
-  "name": "ts-intro",
+  "name": "01-intro-ts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "axios": "^1.6.5"
   }
 }

@@ -1,10 +1,15 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
-
+import './style.css';
+import typescriptLogo from './typescript.svg';
+import viteLogo from '/vite.svg';
+import {setupCounter} from './counter.ts';
+import {charmander} from './bases/06-decorators2';
+// import {charmander} from './bases/05-decorators.ts';
+// import {charmeleon} from './bases/04-injections.ts';
+// import {age, name, valido} from './bases/01-types';
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
+   <h1>Hola  ${charmander.name}-  #${charmander.id}  </h1>
+  <p> Edad:  </p>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
@@ -19,6 +24,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       Click on the Vite and TypeScript logos to learn more
     </p>
   </div>
-`
+`;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
